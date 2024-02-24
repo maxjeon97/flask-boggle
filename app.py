@@ -54,12 +54,10 @@ def score_word():
         result: "...word_status..."
     }
     """
-
     game_data = request.json
 
     game_id = game_data["gameId"]
     word = game_data["word"]
-
     game = games[game_id]
 
     word_status = ""
@@ -74,9 +72,3 @@ def score_word():
         word_status = "ok"
 
     return jsonify({"result": f"{word_status}"})
-
-
-
-
-
-
