@@ -70,5 +70,8 @@ def score_word():
 
     else:
         word_status = "ok"
+        game.play_and_score_word(word)
 
-    return jsonify({"result": f"{word_status}"})
+    game_score = game.score
+
+    return jsonify({"result": f"{word_status}", "gameScore": game_score})

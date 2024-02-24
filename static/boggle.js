@@ -7,6 +7,7 @@ const $message = $(".msg");
 const $table = $("table");
 
 const $tbody = $("tbody");
+const $gameScore = $("#score")
 
 
 let gameId;
@@ -47,7 +48,7 @@ function displayBoard(board) {
 
 
 /* Submit request to API to get score of a word
-Returns an object -> {"result": "...word_status..."}
+Returns an object -> {"result": "...word_status...", "gameScore": game_score}
 */
 async function getScore() {
   const response = await fetch(
@@ -74,11 +75,11 @@ async function getScore() {
 /* Returns message based on results of word submission */
 function generateMessage(data) {
   if (data.result === "not-word") {
-    return `Not a word!`;
+    return `That is not a word!`;
   }
 
   else if (data.result === "not-on-board") {
-    return `The word doesn't exist on this board!`;
+    return `That word doesn't exist on this board!`;
   }
 
   else {
@@ -86,6 +87,9 @@ function generateMessage(data) {
   }
 }
 
+function displayScore(data) {
+  $gameScore.html(`${data.gameScore}`)
+}
 
 /* Displays message in the DOM if word is invalid
 Otherwise appends word to the DOM word list*/
@@ -107,6 +111,8 @@ async function handleFormSubmit(evt) {
 
   const data = await getScore();
   const message = generateMessage(data);
+  displayScore(data);
+
   displayResult(message);
 }
 
