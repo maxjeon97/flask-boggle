@@ -65,7 +65,6 @@ async function getScore() {
       {
         "content-type": "application/json"
       }
-
     }
   );
 
@@ -75,17 +74,17 @@ async function getScore() {
 
 /* Returns message based on results of word submission */
 function generateMessage(data) {
-
   if (data.result === "not-word") {
     return `Not a word!`;
-
-  } else if (data.result === "not-on-board") {
-    return `The word doesn't exist on this board!`;
-
-  } else {
-    return `Ok!`;
   }
 
+  else if (data.result === "not-on-board") {
+    return `The word doesn't exist on this board!`;
+  }
+
+  else {
+    return `Ok!`;
+  }
 }
 
 
