@@ -43,7 +43,6 @@ function displayBoard(board) {
 
     $tbody.append($row);
   }
-
 }
 
 
@@ -93,8 +92,9 @@ Otherwise appends word to the DOM word list*/
 function displayResult(message) {
   if (message === 'Ok!') {
     $playedWords.append(`<li>${$wordInput.val().toUpperCase()}</li>`);
+  }
 
-  } else {
+  else {
     $message.html(`${message}`);
   }
 }
